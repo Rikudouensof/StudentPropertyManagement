@@ -14,6 +14,6 @@ namespace StudentPropertyManagement.Constants
 
     public string ConcurencyStamd = new Guid().ToString();
 
-    public string AdminPasseord = "Admin.001";
+    public string AdminPasseord = "Admin.001RRR";
   }
 }

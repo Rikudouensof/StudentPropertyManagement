@@ -74,7 +74,7 @@ namespace StudentPropertyManagement.Areas.Identity.Pages.Account
 
       [Required]
       [Display(Name = "Gender")]
-      public int Gender { get; set; }
+      public string Gender { get; set; }
 
 
       [Required]
@@ -99,9 +99,11 @@ namespace StudentPropertyManagement.Areas.Identity.Pages.Account
     {
       returnUrl ??= Url.Content("~/");
       ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+      int GenderVV = int.Parse(Input.Gender);
+      var user = new User { UserName = Input.RegNumber, Email = Input.Email, RegNumber = Input.RegNumber, FirstName = Input.FirstName, Surname = Input.Surname, MiddleName = Input.MiddleName, GenderId = GenderVV };
       if (ModelState.IsValid)
       {
-        var user = new User { UserName = Input.Email, Email = Input.Email };
+       
         var result = await _userManager.CreateAsync(user, Input.Password);
         if (result.Succeeded)
         {

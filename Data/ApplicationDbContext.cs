@@ -22,5 +22,9 @@ namespace StudentPropertyManagement.Data
     public DbSet<Buildings> Buildings { get; set; }
 
     public DbSet<Complaint> Complaints { get; set; }
+
+    public DbSet<ContactUs> ContactUs { get; set; }
+
+    public DbSet<RenewRequest> RenewRequests { get; set; }
   }
 }

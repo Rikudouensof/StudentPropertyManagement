@@ -13,8 +13,8 @@ namespace StudentPropertyManagement.ProjectTasks
   public class AddRoleAndAdmin
   {
     public ApplicationDbContext _db;
-    private readonly SignInManager<User> _signInManager;
-    private readonly UserManager<User> _userManager;
+    private  SignInManager<User> _signInManager;
+    private  UserManager<User> _userManager;
     private RoleManager<IdentityRole> _roleManager;
     public AddRoleAndAdmin(UserManager<User> userManager,
             SignInManager<User> signInManager,
@@ -28,18 +28,16 @@ namespace StudentPropertyManagement.ProjectTasks
     }
 
 
-    private async void PrepareTheNeedful()
+    public async void PrepareTheNeedful()
     {
-      if (_db.UserRoles.Count() < 1)
+
+      if (_db.Genders.Count() < 1)
       {
-        CreateIdentityRoleAdmin();
-        var userId = await CreateUserAdmin();
-        ConnectAdminRoleToUserAdmin(userId);
 
         List<Gender> coreGender = new List<Gender>();
-        coreGender.Add(new Gender { Id = 1, Name = "Not Assigned" });
-        coreGender.Add(new Gender { Id = 2, Name = "Male" });
-        coreGender.Add(new Gender { Id = 3, Name = "Female" });
+        coreGender.Add(new Gender {  Name = "Not Assigned" });
+        coreGender.Add(new Gender {  Name = "Male" });
+        coreGender.Add(new Gender { Name = "Female" });
 
         foreach (var item in coreGender)
         {
@@ -47,10 +45,13 @@ namespace StudentPropertyManagement.ProjectTasks
         }
         _db.SaveChanges();
       }
+
+
+      
      
     }
 
-    private async  void CreateIdentityRoleAdmin()
+    public async  void CreateIdentityRoleAdmin()
     {
       if (_db.Roles.Count() < 1)
       {
@@ -69,30 +70,45 @@ namespace StudentPropertyManagement.ProjectTasks
 
     }
 
-    private async Task<string> CreateUserAdmin()
+    public async void CreateUserAdmin()
     {
       if (_db.Users.Count() < 1)
       {
         DataIdentityRole dataIdentityRole = new DataIdentityRole();
-        User adminUser = new User()
+        var adminUser = new User()
         {
+          UserName = "Admin",
           Email = "Admin@StuProp.com",
           Surname = "Admin",
           SecurityStamp = dataIdentityRole.ConcurencyStamd,
           FirstName = "Admin",
           MiddleName = "Admin",
-          EmailConfirmed = true
+          EmailConfirmed = true,
+          RegNumber = "Admin",
+          GenderId = 1
 
         };
         var result = await _userManager.CreateAsync(adminUser, dataIdentityRole.AdminPasseord);
+        if(true)
+        {
+          string resultkk = "";
+          int number = 1;
+          foreach (var error in result.Errors)
+          {
+
+            resultkk += $"\n {number}: {error.Description}"; 
+          }
+          System.Diagnostics.Debug.WriteLine(resultkk);
+
+        }
+        Console.ReadKey();
         
       }
 
-      var userId = _db.Users.Select(m => m.Id).FirstOrDefault();
-      return userId;
+   
     }
 
-    private  void ConnectAdminRoleToUserAdmin(string userId)
+    public  void ConnectAdminRoleToUserAdmin(string userId)
     {
       if (_db.UserRoles.Count() < 1)
       {
