@@ -13,18 +13,22 @@ namespace StudentPropertyManagement.Models
 
 
     [Required]
+    [Display(Name = "Full Name")]
     public string FullName { get; set; }
 
     [Required]
     [EmailAddress]
+    [Display(Name = "Email Address")]
     public string Email { get; set; }
 
-
+    [Display(Name = "Phone Number")]
     public string PhoneNumber { get; set; }
 
     [Required]
+    [Display(Name = "Message")]
     public string Message { get; set; }
 
+    [Display(Name = "Date Sent")]
     public DateTime DateSent { get; set; }
 
   }
