@@ -38,7 +38,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto my-2 my-lg-0">
           <li class="nav-item"><a class="nav-link" href="#about">Renew</a></li>
-          <li class="nav-item"><a class="nav-link" href="#portfolio">Dashbord</a></li>
+          <li class="nav-item"><a class="nav-link" href="@Url.Action("Profile","Dashbord")">Dashbord</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -67,7 +67,7 @@
           <h2 class="text-white mt-0">Renew your lodging!</h2>
           <hr class="divider divider-light" />
           <p class="text-white-75 mb-4">Payment renewed, and do not know what to do next? Look no futher click on the renew button and fill the form</p>
-          <a class="btn btn-light btn-xl" href="#services">Renew now</a>
+          <a class="btn btn-light btn-xl" asp-area="Identity" asp-page="/Account/ResendEmailConfirmation">Renew now</a>
         </div>
       </div>
     </div>
