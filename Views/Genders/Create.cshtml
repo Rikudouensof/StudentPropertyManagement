@@ -1,34 +1,33 @@
 ﻿@model StudentPropertyManagement.Models.Gender
 
 @{
-  ViewData["Title"] = "Create";
+  ViewData["Title"] = "Create New Gender";
   Layout = "~/Views/Shared/_DashbordLayout.cshtml";
 }
-
-<h1>Create</h1>
-
-<h4>Gender</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
+  <div class="col-lg-8 col-xlg-9 col-md-12">
+    <div class="card">
+      <div class="card-body">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+          <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+          <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+          </div>
         </form>
+      </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+    <div>
+      <a asp-action="Index">Back to List</a>
+    </div>
+  </div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
