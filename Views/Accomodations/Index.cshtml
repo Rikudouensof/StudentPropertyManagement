@@ -1,68 +1,68 @@
 ﻿@model IEnumerable<StudentPropertyManagement.Models.Accomodation>
 
 @{
-  ViewData["Title"] = "Index";
+  ViewData["Title"] = "Accomodations";
   Layout = "~/Views/Shared/_DashbordLayout.cshtml";
 
 }
-
-<h1>Index</h1>
-
-<p>
-  <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-  <thead>
-    <tr>
-      <th>
-        @Html.DisplayNameFor(model => model.Name)
-      </th>
-      <th>
-        @Html.DisplayNameFor(model => model.ExpiryDate)
-      </th>
-      <th>
-        @Html.DisplayNameFor(model => model.JoinedDate)
-      </th>
-      <th>
-        @Html.DisplayNameFor(model => model.AccomodationPosition)
-      </th>
-      <th>
-        @Html.DisplayNameFor(model => model.Student)
-      </th>
-      <th>
-        @Html.DisplayNameFor(model => model.Space)
-      </th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach (var item in Model)
-    {
-      <tr>
-        <td>
-          @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-          @Html.DisplayFor(modelItem => item.ExpiryDate)
-        </td>
-        <td>
-          @Html.DisplayFor(modelItem => item.JoinedDate)
-        </td>
-        <td>
-          @Html.DisplayFor(modelItem => item.AccomodationPosition)
-        </td>
-        <td>
-          @Html.DisplayFor(modelItem => item.Student.Id)
-        </td>
-        <td>
-          @Html.DisplayFor(modelItem => item.Space.Id)
-        </td>
-        <td>
-          <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-          <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-          <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-        </td>
-      </tr>
-    }
-  </tbody>
-</table>
+<div class="white-box">
+  <h3 class="box-title">@ViewData["Title"]</h3>
+  <p class="text-muted"><a asp-action="Create" class="btn btn-outline-secondary">Create New</a></p>
+  <div class="table-responsive">
+    <table class="table text-nowrap">
+      <thead>
+        <tr>
+          <th>
+            @Html.DisplayNameFor(model => model.Name)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.JoinedDate)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.AccomodationPosition)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Student)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Space)
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model)
+        {
+          <tr>
+            <td>
+              @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.ExpiryDate)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.JoinedDate)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.AccomodationPosition)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Student.Id)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Space.Id)
+            </td>
+            <td>
+              <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
+              <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+              <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -15,7 +15,7 @@
   <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
   <meta name="robots" content="noindex,nofollow">
-  <title>@ViewData["Title"] - StudentPropertyManagement</title>
+  <title>@ViewData["Title"] - Student Property Management</title>
   <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
   <!-- Favicon icon -->
   <link rel="icon" type="image/png" sizes="16x16" href="~/assetd/plugins/images/favicon.png">
@@ -106,8 +106,8 @@
             <!-- ============================================================== -->
             <li>
               <a class="profile-pic" href="#">
-                <img src="~/assetd/plugins/images/users/varun.jpg" alt="user-img" width="36"
-                     class="img-circle"><span class="text-white font-medium">Steave</span>
+                <img src="~/assetd/plugins/images/users/studentProfile.jpg" alt="user-img" width="36"
+                     class="img-circle"><span class="text-white font-medium">Student</span>
               </a>
             </li>
             <!-- ============================================================== -->
@@ -130,67 +130,103 @@
         <nav class="sidebar-nav">
           <ul id="sidebarnav">
             <!-- User Profile-->
-            <li class="sidebar-item pt-2">
-              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
-                 aria-expanded="false">
-                <i class="far fa-clock" aria-hidden="true"></i>
-                <span class="hide-menu">Dashboard</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.html"
-                 aria-expanded="false">
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <span class="hide-menu">Profile</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
-                 aria-expanded="false">
-                <i class="fa fa-users" aria-hidden="true"></i>
-                <span class="hide-menu">Students</span>
-              </a>
-            </li>
 
-            <li class="sidebar-item">
-              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
-                 aria-expanded="false">
-                <i class="fa fa-building" aria-hidden="true"></i>
-                <span class="hide-menu">Buildings</span>
-              </a>
-            </li>
 
-            <li class="sidebar-item">
-              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
-                 aria-expanded="false">
-                <i class="fa fa-table" aria-hidden="true"></i>
-                <span class="hide-menu">Lodges & Spaces</span>
-              </a>
-            </li>
+            @if (User.IsInRole("Admin"))
+            {
+              <li class="sidebar-item pt-2">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Dashbord")"
+                   aria-expanded="false">
+                  <i class="far fa-clock" aria-hidden="true"></i>
+                  <span class="hide-menu">Dashboard</span>
+                </a>
+              </li>
 
-            <li class="sidebar-item">
-              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
-                 aria-expanded="false">
-                <i class="fa fa-table" aria-hidden="true"></i>
-                <span class="hide-menu">Accomodations</span>
-              </a>
-            </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Students","Dashbord")"
+                   aria-expanded="false">
+                  <i class="fa fa-users" aria-hidden="true"></i>
+                  <span class="hide-menu">Students</span>
+                </a>
+              </li>
 
-            <li class="sidebar-item">
-              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
-                 aria-expanded="false">
-                <i class="fa fa-list" aria-hidden="true"></i>
-                <span class="hide-menu">Complaints</span>
-              </a>
-            </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","RenewRequests")"
+                   aria-expanded="false">
+                  <i class="fa fa-list" aria-hidden="true"></i>
+                  <span class="hide-menu">Renewal Request</span>
+                </a>
+              </li>
 
-            <li class="sidebar-item">
-              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
-                 aria-expanded="false">
-                <i class="fa fa-genderless" aria-hidden="true"></i>
-                <span class="hide-menu">Gender</span>
-              </a>
-            </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Buildings")"
+                   aria-expanded="false">
+                  <i class="fa fa-building" aria-hidden="true"></i>
+                  <span class="hide-menu">Buildings</span>
+                </a>
+              </li>
+
+              <li class="sidebar-item">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","AccomodationSpaces")"
+                   aria-expanded="false">
+                  <i class="fa fa-table" aria-hidden="true"></i>
+                  <span class="hide-menu">Lodges & Spaces</span>
+                </a>
+              </li>
+
+              <li class="sidebar-item">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Accomodations")"
+                   aria-expanded="false">
+                  <i class="fa fa-table" aria-hidden="true"></i>
+                  <span class="hide-menu">Accomodations</span>
+                </a>
+              </li>
+
+              <li class="sidebar-item">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Complaints")"
+                   aria-expanded="false">
+                  <i class="fa fa-list" aria-hidden="true"></i>
+                  <span class="hide-menu">Complaints</span>
+                </a>
+              </li>
+
+              <li class="sidebar-item">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Genders")"
+                   aria-expanded="false">
+                  <i class="fa fa-genderless" aria-hidden="true"></i>
+                  <span class="hide-menu">Gender</span>
+                </a>
+              </li>
+
+              <li class="sidebar-item">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","ContactUs")"
+                   aria-expanded="false">
+                  <i class="fa fa-list" aria-hidden="true"></i>
+                  <span class="hide-menu">Contact Us</span>
+                </a>
+              </li>
+
+
+
+            }
+            else
+            {
+              <li class="sidebar-item">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Profile","Dashbord")"
+                   aria-expanded="false">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <span class="hide-menu">Profile</span>
+                </a>
+              </li>
+
+              <li class="sidebar-item">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","StudentComplaints")"
+                   aria-expanded="false">
+                  <i class="fa fa-list" aria-hidden="true"></i>
+                  <span class="hide-menu">Complaints</span>
+                </a>
+              </li>
+            }
 
 
 
@@ -221,16 +257,16 @@
       <div class="page-breadcrumb bg-white">
         <div class="row align-items-center">
           <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Blank Page</h4>
+            <h4 class="page-title">@ViewData["Title"]</h4>
           </div>
           <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
             <div class="d-md-flex">
               <ol class="breadcrumb ms-auto">
-                <li><a href="#" class="fw-normal">Dashboard</a></li>
+                <li><a asp-action="Profile" class="fw-normal">Dashboard / @ViewData["Title"]</a></li>
               </ol>
               <a href="https://www.wrappixel.com/templates/ampleadmin/" target="_blank"
                  class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">
-               Log Out
+                Log Out
               </a>
             </div>
           </div>
@@ -266,7 +302,7 @@
       <!-- footer -->
       <!-- ============================================================== -->
       <footer class="footer text-center">
-         © @DateTime.Now.ToString("yyyy") - Student Property Management
+        © @DateTime.Now.ToString("yyyy") - Student Property Management
       </footer>
       <!-- ============================================================== -->
       <!-- End footer -->
@@ -292,6 +328,7 @@
   <script src="~/assetd/js/sidebarmenu.js"></script>
   <!--Custom JavaScript -->
   <script src="~/assetd/js/custom.js"></script>
+  @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>
