@@ -21,5 +21,7 @@ namespace StudentPropertyManagement.Models
 
     [Display(Name = "Gender Expected to live here")]
     public int GenderId { get; set; }
+
+   
   }
 }

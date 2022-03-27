@@ -1,4 +1,4 @@
-﻿@model StudentPropertyManagement.Models.AccomodationSpace
+﻿@model StudentPropertyManagement.ViewModel.SpaceDetailsViewmodel
 
 @{
   ViewData["Title"] = "Space Details";
@@ -7,6 +7,9 @@
 }
 
 <div class="row">
+
+
+
   <div class="col-lg-8 col-xlg-9 col-md-12">
     <div class="card">
       <div class="card-body">
@@ -17,30 +20,97 @@
           <hr />
           <dl class="row">
             <dt class="col-sm-2">
-              @Html.DisplayNameFor(model => model.Name)
+              @Html.DisplayNameFor(model => model.Space.Name)
             </dt>
             <dd class="col-sm-10">
-              @Html.DisplayFor(model => model.Name)
+              @Html.DisplayFor(model => model.Space.Name)
             </dd>
             <dt class="col-sm-2">
-              @Html.DisplayNameFor(model => model.Capacity)
+              @Html.DisplayNameFor(model => model.Space.Capacity)
             </dt>
             <dd class="col-sm-10">
-              @Html.DisplayFor(model => model.Capacity)
+              @Html.DisplayFor(model => model.Space.Capacity)
             </dd>
             <dt class="col-sm-2">
-              @Html.DisplayNameFor(model => model.Gender)
+              @Html.DisplayNameFor(model => model.Space.Gender)
             </dt>
             <dd class="col-sm-10">
-              @Html.DisplayFor(model => model.Gender.Id)
+              @Html.DisplayFor(model => model.Space.Gender.Id)
             </dd>
           </dl>
         </div>
         <div>
-          <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+          <a asp-action="Edit" asp-route-id="@Model.Space.Id">Edit</a> |
           <a asp-action="Index">Back to List</a>
         </div>
       </div>
     </div>
   </div>
+
+
+
+
+  <div class="white-box">
+    <h3 class="box-title">@ViewData["Title"]</h3>
+    <p class="text-muted"><a asp-action="Create" class="btn btn-outline-secondary">Create New</a></p>
+    <div class="table-responsive">
+      <table class="table text-nowrap">
+        <thead>
+          <tr>
+            <th>
+             Name
+            </th>
+            <th>
+             Expiry Date
+            </th>
+            <th>
+              Joined Date
+            </th>
+            <th>
+              Accomodation Position
+            </th>
+            <th>
+              Student
+            </th>
+            <th>
+              Space
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var item in Model.Accomodations)
+          {
+            <tr>
+              <td>
+                @Html.DisplayFor(modelItem => item.Name)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.ExpiryDate)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.JoinedDate)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.AccomodationPosition)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.Student.UserName)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.Space.Name)
+              </td>
+              <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
+

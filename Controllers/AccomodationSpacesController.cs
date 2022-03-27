@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StudentPropertyManagement.Data;
 using StudentPropertyManagement.Models;
+using StudentPropertyManagement.ViewModel;
 
 namespace StudentPropertyManagement.Controllers
 {
@@ -43,8 +44,12 @@ namespace StudentPropertyManagement.Controllers
             {
                 return NotFound();
             }
-
-            return View(accomodationSpace);
+      SpaceDetailsViewmodel space = new SpaceDetailsViewmodel()
+      {
+        Space = accomodationSpace,
+        Accomodations = _context.Accomodations.Include(a => a.Space).Include(a => a.Student).Where(m => m.SpaceId == accomodationSpace.Id).OrderByDescending(m => m.Id)
+      };
+            return View(space);
         }
 
         // GET: AccomodationSpaces/Create
