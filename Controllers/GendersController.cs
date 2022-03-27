@@ -24,7 +24,7 @@ namespace StudentPropertyManagement.Controllers
         // GET: Genders
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Genders.ToListAsync());
+            return View(await _context.Genders.OrderByDescending(m => m.Id).ToListAsync());
         }
 
         // GET: Genders/Details/5

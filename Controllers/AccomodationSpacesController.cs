@@ -24,7 +24,7 @@ namespace StudentPropertyManagement.Controllers
         // GET: AccomodationSpaces
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.AccomodationSpaces.Include(a => a.Gender);
+            var applicationDbContext = _context.AccomodationSpaces.Include(a => a.Gender).OrderByDescending(m => m.Id);
             return View(await applicationDbContext.ToListAsync());
         }
 

@@ -24,7 +24,7 @@ namespace StudentPropertyManagement.Controllers
         // GET: Complaints
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Complaints.Include(c => c.User);
+            var applicationDbContext = _context.Complaints.Include(c => c.User).OrderByDescending(m => m.Id);
             return View(await applicationDbContext.ToListAsync());
         }
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StudentPropertyManagement.Data;
 using StudentPropertyManagement.ViewModel;
 using System;
@@ -34,7 +35,7 @@ namespace StudentPropertyManagement.Controllers
       var user = _db.Users.Where(m => m.Id == userId).FirstOrDefault();
       ProfileViewModel profileViewModel = new ProfileViewModel()
       {
-        Accomodations = _db.Accomodations.Where(m => m.UserId == userId).OrderByDescending(m => m.JoinedDate),
+        Accomodations = _db.Accomodations.Where(m => m.UserId == userId).Include(m => m.Space).OrderByDescending(m => m.JoinedDate),
         User = user
       };
       return View(profileViewModel);

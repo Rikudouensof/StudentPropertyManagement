@@ -24,7 +24,7 @@ namespace StudentPropertyManagement.Controllers
         // GET: ContactUs
         public async Task<IActionResult> Index()
         {
-            return View(await _context.ContactUs.ToListAsync());
+            return View(await _context.ContactUs.OrderByDescending(m => m.DateSent).ToListAsync());
         }
 
         // GET: ContactUs/Details/5

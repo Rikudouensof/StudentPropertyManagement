@@ -25,7 +25,7 @@ namespace StudentPropertyManagement.Controllers
         // GET: RenewRequests
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.RenewRequests.Include(r => r.Student);
+            var applicationDbContext = _context.RenewRequests.Include(r => r.Student).OrderByDescending(m => m.DateRequested);
             return View(await applicationDbContext.ToListAsync());
         }
 
