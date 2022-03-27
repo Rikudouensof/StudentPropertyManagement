@@ -51,7 +51,7 @@ namespace StudentPropertyManagement.Controllers
         // GET: StudentComplaints/Create
         public IActionResult Create()
         {
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "UserName");
             return View();
         }
 
@@ -68,7 +68,7 @@ namespace StudentPropertyManagement.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", complaint.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "UserName", complaint.UserId);
             return View(complaint);
         }
 
@@ -85,7 +85,7 @@ namespace StudentPropertyManagement.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", complaint.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "UserName", complaint.UserId);
             return View(complaint);
         }
 
@@ -121,7 +121,7 @@ namespace StudentPropertyManagement.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", complaint.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "UserName", complaint.UserId);
             return View(complaint);
         }
 

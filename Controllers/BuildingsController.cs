@@ -50,7 +50,7 @@ namespace StudentPropertyManagement.Controllers
         // GET: Buildings/Create
         public IActionResult Create()
         {
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id");
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Name");
             return View();
         }
 
@@ -67,7 +67,7 @@ namespace StudentPropertyManagement.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", buildings.GenderId);
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Name", buildings.GenderId);
             return View(buildings);
         }
 
@@ -84,7 +84,7 @@ namespace StudentPropertyManagement.Controllers
             {
                 return NotFound();
             }
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", buildings.GenderId);
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Name", buildings.GenderId);
             return View(buildings);
         }
 
@@ -120,7 +120,7 @@ namespace StudentPropertyManagement.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", buildings.GenderId);
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Name", buildings.GenderId);
             return View(buildings);
         }
 

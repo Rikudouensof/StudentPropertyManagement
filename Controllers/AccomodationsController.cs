@@ -51,8 +51,8 @@ namespace StudentPropertyManagement.Controllers
         // GET: Accomodations/Create
         public IActionResult Create()
         {
-            ViewData["SpaceId"] = new SelectList(_context.AccomodationSpaces, "Id", "Id");
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["SpaceId"] = new SelectList(_context.AccomodationSpaces, "Id", "Name");
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "UserName");
             return View();
         }
 
@@ -69,8 +69,8 @@ namespace StudentPropertyManagement.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SpaceId"] = new SelectList(_context.AccomodationSpaces, "Id", "Id", accomodation.SpaceId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", accomodation.UserId);
+            ViewData["SpaceId"] = new SelectList(_context.AccomodationSpaces, "Id", "Name", accomodation.SpaceId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "UserName", accomodation.UserId);
             return View(accomodation);
         }
 
@@ -87,8 +87,8 @@ namespace StudentPropertyManagement.Controllers
             {
                 return NotFound();
             }
-            ViewData["SpaceId"] = new SelectList(_context.AccomodationSpaces, "Id", "Id", accomodation.SpaceId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", accomodation.UserId);
+            ViewData["SpaceId"] = new SelectList(_context.AccomodationSpaces, "Id", "Name", accomodation.SpaceId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "UserName", accomodation.UserId);
             return View(accomodation);
         }
 
@@ -124,8 +124,8 @@ namespace StudentPropertyManagement.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SpaceId"] = new SelectList(_context.AccomodationSpaces, "Id", "Id", accomodation.SpaceId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", accomodation.UserId);
+            ViewData["SpaceId"] = new SelectList(_context.AccomodationSpaces, "Id", "Name", accomodation.SpaceId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "UserName", accomodation.UserId);
             return View(accomodation);
         }
 

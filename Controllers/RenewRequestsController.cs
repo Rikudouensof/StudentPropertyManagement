@@ -51,7 +51,7 @@ namespace StudentPropertyManagement.Controllers
         // GET: RenewRequests/Create
         public IActionResult Create()
         {
-            ViewData["StudentId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["StudentId"] = new SelectList(_context.Users, "Id", "UserName");
             return View();
         }
 
@@ -68,7 +68,7 @@ namespace StudentPropertyManagement.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["StudentId"] = new SelectList(_context.Users, "Id", "Id", renewRequest.StudentId);
+            ViewData["StudentId"] = new SelectList(_context.Users, "Id", "UserName", renewRequest.StudentId);
             return View(renewRequest);
         }
 
@@ -85,7 +85,7 @@ namespace StudentPropertyManagement.Controllers
             {
                 return NotFound();
             }
-            ViewData["StudentId"] = new SelectList(_context.Users, "Id", "Id", renewRequest.StudentId);
+            ViewData["StudentId"] = new SelectList(_context.Users, "Id", "UserName", renewRequest.StudentId);
             return View(renewRequest);
         }
 
@@ -121,7 +121,7 @@ namespace StudentPropertyManagement.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["StudentId"] = new SelectList(_context.Users, "Id", "Id", renewRequest.StudentId);
+            ViewData["StudentId"] = new SelectList(_context.Users, "Id", "UserName", renewRequest.StudentId);
             return View(renewRequest);
         }
 

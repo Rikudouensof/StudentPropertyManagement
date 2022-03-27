@@ -50,7 +50,7 @@ namespace StudentPropertyManagement.Controllers
         // GET: AccomodationSpaces/Create
         public IActionResult Create()
         {
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id");
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Name");
             return View();
         }
 
@@ -67,7 +67,7 @@ namespace StudentPropertyManagement.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", accomodationSpace.GenderId);
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Name", accomodationSpace.GenderId);
             return View(accomodationSpace);
         }
 
@@ -84,7 +84,7 @@ namespace StudentPropertyManagement.Controllers
             {
                 return NotFound();
             }
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", accomodationSpace.GenderId);
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Name", accomodationSpace.GenderId);
             return View(accomodationSpace);
         }
 
@@ -120,7 +120,7 @@ namespace StudentPropertyManagement.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", accomodationSpace.GenderId);
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Name", accomodationSpace.GenderId);
             return View(accomodationSpace);
         }
 
