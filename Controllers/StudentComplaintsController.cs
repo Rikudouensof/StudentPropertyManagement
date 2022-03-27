@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,8 @@ namespace StudentPropertyManagement.Controllers
         // GET: StudentComplaints
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Complaints.Include(c => c.User).OrderByDescending(m => m.Id);
+      var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+      var applicationDbContext = _context.Complaints.Include(c => c.User).Where(m => m.UserId == userId).OrderByDescending(m => m.Id);
             return View(await applicationDbContext.ToListAsync());
         }
 

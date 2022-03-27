@@ -1,9 +1,10 @@
 ﻿@model StudentPropertyManagement.ViewModel.ProfileViewModel
 @{
-  ViewData["Title"] = "Profile";
+  ViewData["Title"] = "StudentDetail";
   Layout = "~/Views/Shared/_DashbordLayout.cshtml";
   int counter = 1;
 }
+
 
 <div class="row">
   <!-- Column -->
@@ -38,7 +39,8 @@
   <div class="col-lg-8 col-xlg-9 col-md-12">
     <div class="card">
       <div class="card-body">
-        <form asp-action="Profile" class="form-horizontal form-material">
+        <form asp-action="StudentDetail" class="form-horizontal form-material">
+          <input type="hidden" asp-for="User.Id" />
           <div class="form-group mb-4">
             <label class="col-md-12 p-0">Full Name</label>
             <div class="col-md-12 border-bottom p-0">
@@ -49,18 +51,37 @@
           <div class="form-group mb-4">
             <label class="col-md-12 p-0">Registation Number</label>
             <div class="col-md-12 border-bottom p-0">
-              <input asp-for="User.RegNumber" type="text" placeholder="Enter your registration number"  value="@Model.User.RegNumber  "
+              <input asp-for="User.RegNumber" type="text" placeholder="Enter your registration number" value="@Model.User.RegNumber  "
                      class="form-control p-0 border-0">
             </div>
           </div>
 
-         
-        
-          
+          <div class="form-group mb-4">
+            <label class="col-md-12 p-0">Surname</label>
+            <div class="col-md-12 border-bottom p-0">
+              <input asp-for="User.Surname" type="text" placeholder="Enter your registration number" value="@Model.User.Surname  "
+                     class="form-control p-0 border-0">
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <label class="col-md-12 p-0">First Name</label>
+            <div class="col-md-12 border-bottom p-0">
+              <input asp-for="User.FirstName" type="text" placeholder="Enter your registration number" value="@Model.User.FirstName  "
+                     class="form-control p-0 border-0">
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <label class="col-md-12 p-0">Middle Name</label>
+            <div class="col-md-12 border-bottom p-0">
+              <input asp-for="User.MiddleName" type="text" placeholder="Enter your registration number" value="@Model.User.MiddleName  "
+                     class="form-control p-0 border-0">
+            </div>
+          </div>
+
+
           <div class="form-group mb-4">
             <div class="col-sm-12">
               <button class="btn btn-success">Update Profile</button>
-              <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-outline-secondary">Manage Account</a>
             </div>
           </div>
         </form>
@@ -87,16 +108,15 @@
 
           @foreach (var item in Model.Accomodations)
           {
-          <tr>
-            <td>@counter</td>
-            <td>@item.Space.Name</td>
-            <td>@item.JoinedDate.ToString("dd/MMMM/yyyy")</td>
-            <td>@item.ExpiryDate.ToString("dd/MMMM/yyyy")</td>
-            <td>
-              <a asp-action="Details" asp-route-id="@item.SpaceId" asp-controller="AccomodationSpace" class="btn btn-primary">View Accomodation</a>
-             
-            </td>
-          </tr>
+            <tr>
+              <td>@counter</td>
+              <td>@item.Space.Name</td>
+              <td>@item.JoinedDate.ToString("dd/MMMM/yyyy")</td>
+              <td>@item.ExpiryDate.ToString("dd/MMMM/yyyy")</td>
+              <td>
+                <a asp-action="Details" asp-route-id="@item.SpaceId" asp-controller="AccomodationSpaces" class="btn btn-primary">View Accomodation</a>
+              </td>
+            </tr>
             counter++;
           }
 
@@ -106,3 +126,5 @@
     </div>
   </div>
 </div>
+
+

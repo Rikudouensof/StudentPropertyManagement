@@ -7,9 +7,9 @@ namespace StudentPropertyManagement.Constants
 {
   public class EmailCredentials
   {
-    public  string senderEmail = "admin@sender.com";
-    public  string senderPassword = "passowd.qq";
-    public  string websiteAddress = "sender.com";
+    public  string senderEmail = "Test@protestwall.com";
+    public  string senderPassword = "8eqT54w$";
+    public  string websiteAddress = "protestwall.com";
 
   }
 }

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using StudentPropertyManagement.Models;
+using StudentPropertyManagement.ProjectTasks;
 
 namespace StudentPropertyManagement.Areas.Identity.Pages.Account
 {
@@ -57,12 +58,20 @@ namespace StudentPropertyManagement.Areas.Identity.Pages.Account
                     values: new { area = "Identity", code },
                     protocol: Request.Scheme);
 
-                await _emailSender.SendEmailAsync(
-                    Input.Email,
-                    "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                
 
-                return RedirectToPage("./ForgotPasswordConfirmation");
+
+
+        EmailProperty emailProperty = new EmailProperty()
+        {
+          Destination = Input.Email,
+          Body = $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.",
+          Subject = "Reset Password"
+          
+        };
+        EmailManagement.SendMail(emailProperty);
+
+        return RedirectToPage("./ForgotPasswordConfirmation");
             }
 
             return Page();

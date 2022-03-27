@@ -13,12 +13,15 @@
   <meta name="keywords"
         content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
   <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+        content="Student - Property managment system">
   <meta name="robots" content="noindex,nofollow">
   <title>@ViewData["Title"] - Student Property Management</title>
   <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
   <!-- Favicon icon -->
-  <link rel="icon" type="image/png" sizes="16x16" href="~/assetd/plugins/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="~/assetd/plugins/images/favicon.png">\
+  <!-- Custom CSS -->
+  <link href="~/assetd/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="~/assetd/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
   <!-- Custom CSS -->
   <link href="~/assetd/css/style.min.css" rel="stylesheet">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -93,239 +96,243 @@
             <!-- ============================================================== -->
             <!-- Search -->
             <!-- ============================================================== -->
-            
             <!-- ============================================================== -->
             <!-- User profile and search -->
             <!-- ============================================================== -->
             <li>
               <a class="profile-pic" href="#">
-                @{ 
+                @{
                   string uderName = "student";
-                  
+
                 }
                 <img src="~/assetd/plugins/images/users/studentProfile.jpg" alt="user-img" width="36"
                      class="img-circle"><span class="text-white font-medium">@uderName</span>
-              </a>
-            </li>
-            <!-- ============================================================== -->
-            <!-- User profile and search -->
-            <!-- ============================================================== -->
-          </ul>
-        </div>
-      </nav>
-    </header>
-    <!-- ============================================================== -->
-    <!-- End Topbar header -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Left Sidebar - style you can find in sidebar.scss  -->
-    <!-- ============================================================== -->
-    <aside class="left-sidebar" data-sidebarbg="skin6">
-      <!-- Sidebar scroll-->
-      <div class="scroll-sidebar">
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav">
-          <ul id="sidebarnav">
-            <!-- User Profile-->
-
-
-            @if (User.IsInRole("Admin"))
-            {
-              <li class="sidebar-item pt-2">
-                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Dashbord")"
-                   aria-expanded="false">
-                  <i class="far fa-clock" aria-hidden="true"></i>
-                  <span class="hide-menu">Dashboard</span>
-                </a>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Students","Dashbord")"
-                   aria-expanded="false">
-                  <i class="fa fa-users" aria-hidden="true"></i>
-                  <span class="hide-menu">Students</span>
-                </a>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","RenewRequests")"
-                   aria-expanded="false">
-                  <i class="fa fa-list" aria-hidden="true"></i>
-                  <span class="hide-menu">Renewal Request</span>
-                </a>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Buildings")"
-                   aria-expanded="false">
-                  <i class="fa fa-building" aria-hidden="true"></i>
-                  <span class="hide-menu">Buildings</span>
-                </a>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","AccomodationSpaces")"
-                   aria-expanded="false">
-                  <i class="fa fa-table" aria-hidden="true"></i>
-                  <span class="hide-menu">Lodges & Spaces</span>
-                </a>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Accomodations")"
-                   aria-expanded="false">
-                  <i class="fa fa-table" aria-hidden="true"></i>
-                  <span class="hide-menu">Accomodations</span>
-                </a>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Complaints")"
-                   aria-expanded="false">
-                  <i class="fa fa-list" aria-hidden="true"></i>
-                  <span class="hide-menu">Complaints</span>
-                </a>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Genders")"
-                   aria-expanded="false">
-                  <i class="fa fa-genderless" aria-hidden="true"></i>
-                  <span class="hide-menu">Gender</span>
-                </a>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","ContactUs")"
-                   aria-expanded="false">
-                  <i class="fa fa-list" aria-hidden="true"></i>
-                  <span class="hide-menu">Contact Us</span>
-                </a>
-              </li>
-
-
-
-            }
-            else
-            {
-              <li class="sidebar-item">
-                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Profile","Dashbord")"
-                   aria-expanded="false">
-                  <i class="fa fa-user" aria-hidden="true"></i>
-                  <span class="hide-menu">Profile</span>
-                </a>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","StudentComplaints")"
-                   aria-expanded="false">
-                  <i class="fa fa-list" aria-hidden="true"></i>
-                  <span class="hide-menu">Complaints</span>
-                </a>
-              </li>
-            }
-
-
-
-
-            <li class="text-center p-20 upgrade-btn">
-              <a href="https://www.wrappixel.com/templates/ampleadmin/"
-                 class="btn d-grid btn-danger text-white" target="_blank">
-                Log out
-              </a>
-            </li>
-          </ul>
-
-        </nav>
-        <!-- End Sidebar navigation -->
-      </div>
-      <!-- End Sidebar scroll-->
-    </aside>
-    <!-- ============================================================== -->
-    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Page wrapper  -->
-    <!-- ============================================================== -->
-    <div class="page-wrapper" style="min-height: 250px;">
-      <!-- ============================================================== -->
-      <!-- Bread crumb and right sidebar toggle -->
-      <!-- ============================================================== -->
-      <div class="page-breadcrumb bg-white">
-        <div class="row align-items-center">
-          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">@ViewData["Title"]</h4>
-          </div>
-          <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-            <div class="d-md-flex">
-              <ol class="breadcrumb ms-auto">
-                <li><a asp-action="Profile" class="fw-normal">Dashboard / @ViewData["Title"]</a></li>
-              </ol>
-              <a href="https://www.wrappixel.com/templates/ampleadmin/" target="_blank"
-                 class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">
-                Log Out
-              </a>
+                  </a>
+                </li>
+                <!-- ============================================================== -->
+                <!-- User profile and search -->
+                <!-- ============================================================== -->
+              </ul>
             </div>
+          </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" data-sidebarbg="skin6">
+          <!-- Sidebar scroll-->
+          <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+              <ul id="sidebarnav">
+                <!-- User Profile-->
+
+
+                @if (User.IsInRole("Admin"))
+                {
+                  <li class="sidebar-item pt-2">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Dashbord")"
+                       aria-expanded="false">
+                      <i class="far fa-clock" aria-hidden="true"></i>
+                      <span class="hide-menu">Dashboard</span>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Students","Dashbord")"
+                       aria-expanded="false">
+                      <i class="fa fa-users" aria-hidden="true"></i>
+                      <span class="hide-menu">Students</span>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","RenewRequests")"
+                       aria-expanded="false">
+                      <i class="fa fa-list" aria-hidden="true"></i>
+                      <span class="hide-menu">Renewal Request</span>
+                    </a>
+                  </li>
+
+                  <!--
+    <li class="sidebar-item">
+      <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Buildings")"
+         aria-expanded="false">
+        <i class="fa fa-building" aria-hidden="true"></i>
+        <span class="hide-menu">Buildings</span>
+      </a>
+    </li>
+    -->
+                  <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","AccomodationSpaces")"
+                       aria-expanded="false">
+                      <i class="fa fa-building" aria-hidden="true"></i>
+                      <span class="hide-menu">Lodges & Spaces</span>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Accomodations")"
+                       aria-expanded="false">
+                      <i class="fa fa-table" aria-hidden="true"></i>
+                      <span class="hide-menu">Accomodations</span>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Complaints")"
+                       aria-expanded="false">
+                      <i class="fa fa-list" aria-hidden="true"></i>
+                      <span class="hide-menu">Complaints</span>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Genders")"
+                       aria-expanded="false">
+                      <i class="fa fa-genderless" aria-hidden="true"></i>
+                      <span class="hide-menu">Gender</span>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","ContactUs")"
+                       aria-expanded="false">
+                      <i class="fa fa-list" aria-hidden="true"></i>
+                      <span class="hide-menu">Contact Us</span>
+                    </a>
+                  </li>
+
+
+
+                }
+                else
+                {
+                  <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Profile","Dashbord")"
+                       aria-expanded="false">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                      <span class="hide-menu">Profile</span>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","StudentComplaints")"
+                       aria-expanded="false">
+                      <i class="fa fa-list" aria-hidden="true"></i>
+                      <span class="hide-menu">Complaints</span>
+                    </a>
+                  </li>
+                }
+
+
+
+
+                <li class="text-center p-20 upgrade-btn">
+                  <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="btn d-grid btn-danger text-white">Log Out</button>
+                  </form>
+
+                </li>
+              </ul>
+
+            </nav>
+            <!-- End Sidebar navigation -->
           </div>
+          <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper" style="min-height: 250px;">
+          <!-- ============================================================== -->
+          <!-- Bread crumb and right sidebar toggle -->
+          <!-- ============================================================== -->
+          <div class="page-breadcrumb bg-white">
+            <div class="row align-items-center">
+              <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">@ViewData["Title"]</h4>
+              </div>
+              <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                <div class="d-md-flex">
+                  <ol class="breadcrumb ms-auto" style="margin-right:30px">
+                    <li><a asp-action="Profile" class="fw-normal">Dashboard / @ViewData["Title"]</a></li>
+                  </ol>
+                  <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="btn d-grid btn-danger text-white">Log Out</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- /.col-lg-12 -->
+          </div>
+          <!-- ============================================================== -->
+          <!-- End Bread crumb and right sidebar toggle -->
+          <!-- ============================================================== -->
+          <!-- ============================================================== -->
+          <!-- Container fluid  -->
+          <!-- ============================================================== -->
+          <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            @RenderBody()
+            <!-- ============================================================== -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Right sidebar -->
+            <!-- ============================================================== -->
+            <!-- .right-sidebar -->
+            <!-- ============================================================== -->
+            <!-- End Right sidebar -->
+            <!-- ============================================================== -->
+          </div>
+          <!-- ============================================================== -->
+          <!-- End Container fluid  -->
+          <!-- ============================================================== -->
+          <!-- ============================================================== -->
+          <!-- footer -->
+          <!-- ============================================================== -->
+          <footer class="footer text-center">
+            © @DateTime.Now.ToString("yyyy") - Student Property Management
+          </footer>
+          <!-- ============================================================== -->
+          <!-- End footer -->
+          <!-- ============================================================== -->
         </div>
-        <!-- /.col-lg-12 -->
-      </div>
-      <!-- ============================================================== -->
-      <!-- End Bread crumb and right sidebar toggle -->
-      <!-- ============================================================== -->
-      <!-- ============================================================== -->
-      <!-- Container fluid  -->
-      <!-- ============================================================== -->
-      <div class="container-fluid">
         <!-- ============================================================== -->
-        <!-- Start Page Content -->
-        <!-- ============================================================== -->
-        @RenderBody()
-        <!-- ============================================================== -->
-        <!-- End PAge Content -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Right sidebar -->
-        <!-- ============================================================== -->
-        <!-- .right-sidebar -->
-        <!-- ============================================================== -->
-        <!-- End Right sidebar -->
+        <!-- End Page wrapper  -->
         <!-- ============================================================== -->
       </div>
       <!-- ============================================================== -->
-      <!-- End Container fluid  -->
+      <!-- End Wrapper -->
       <!-- ============================================================== -->
       <!-- ============================================================== -->
-      <!-- footer -->
+      <!-- All Jquery -->
       <!-- ============================================================== -->
-      <footer class="footer text-center">
-        © @DateTime.Now.ToString("yyyy") - Student Property Management
-      </footer>
-      <!-- ============================================================== -->
-      <!-- End footer -->
-      <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
-  </div>
-  <!-- ============================================================== -->
-  <!-- End Wrapper -->
-  <!-- ============================================================== -->
-  <!-- ============================================================== -->
-  <!-- All Jquery -->
-  <!-- ============================================================== -->
-  <script src="~/assetd/plugins/bower_components/jquery/dist/jquery.min.js"></script>
-  <!-- Bootstrap tether Core JavaScript -->
-  <script src="~/assetd/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="~/assetd/js/app-style-switcher.js"></script>
-  <!--Wave Effects -->
-  <script src="~/assetd/js/waves.js"></script>
-  <!--Menu sidebar -->
-  <script src="~/assetd/js/sidebarmenu.js"></script>
-  <!--Custom JavaScript -->
-  <script src="~/assetd/js/custom.js"></script>
-  @await RenderSectionAsync("Scripts", required: false)
-</body>
+      <script src="~/assetd/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+      <!-- Bootstrap tether Core JavaScript -->
+      <script src="~/assetd/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="~/assetd/js/app-style-switcher.js"></script>
+      <script src="~/assetd/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+      <!--Wave Effects -->
+      <script src="~/assetd/js/waves.js"></script>
+      <!--Menu sidebar -->
+      <script src="~/assetd/js/sidebarmenu.js"></script>
+      <!--Custom JavaScript -->
+      <script src="~/assetd/js/custom.js"></script>
+      <!--chartis chart-->
+      <script src="~/assetd/plugins/bower_components/chartist/dist/chartist.min.js"></script>
+      <script src="~/assetd/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+      <script src="~/assetd/js/pages/dashboards/dashboard1.js"></script>
+      @await RenderSectionAsync("Scripts", required: false)
+    </body>
 
 </html>

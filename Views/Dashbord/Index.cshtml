@@ -1,0 +1,122 @@
+﻿@model StudentPropertyManagement.ViewModel.DashbordViewModel
+@{
+  ViewData["Title"] = "Index";
+  Layout = "~/Views/Shared/_DashbordLayout.cshtml";
+}
+<!-- Three charts -->
+<!-- ============================================================== -->
+<div class="row justify-content-center">
+  <div class="col-lg-4 col-md-12">
+    <div class="white-box analytics-info">
+      <h3 class="box-title">Total Accomodation</h3>
+      <ul class="list-inline two-part d-flex align-items-center mb-0">
+        <li>
+          <div id="sparklinedash">
+            <canvas width="67" height="30"
+                    style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+          </div>
+        </li>
+        <li class="ms-auto"><span class="counter text-success">@Model.TotalAccomodation</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-12">
+    <div class="white-box analytics-info">
+      <h3 class="box-title">Total Living Spaces</h3>
+      <ul class="list-inline two-part d-flex align-items-center mb-0">
+        <li>
+          <div id="sparklinedash2">
+            <canvas width="67" height="30"
+                    style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+          </div>
+        </li>
+        <li class="ms-auto"><span class="counter text-purple">@Model.TotalSpaces</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-12">
+    <div class="white-box analytics-info">
+      <h3 class="box-title">Unique Visitor</h3>
+      <ul class="list-inline two-part d-flex align-items-center mb-0">
+        <li>
+          <div id="sparklinedash3">
+            <canvas width="67" height="30"
+                    style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+          </div>
+        </li>
+        <li class="ms-auto">
+          <span class="counter text-info">@Model.TotalStudents</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Accomodations -->
+<!-- ============================================================== -->
+<div class="white-box">
+  <h3 class="box-title">@ViewData["Title"]</h3>
+  <p class="text-muted"><a asp-action="Create" asp-controller="Accomodations" class="btn btn-outline-secondary">Create New</a></p>
+  <div class="table-responsive">
+    <table class="table text-nowrap">
+      <thead>
+        <tr>
+     
+          <th>
+            Name
+          </th>
+          <th>
+            Expiry Date
+          </th>
+          <th>
+            Joined Date
+          </th>
+          <th>
+            Accomodation Position
+          </th>
+          <th>
+            Student
+          </th>
+          <th>
+            Space
+          </th>
+          <th></th>
+        </tr>
+          
+      </thead>
+      <tbody>
+        @foreach (var item in Model.Accomodations)
+        {
+          <tr>
+            <td>
+              @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.ExpiryDate)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.JoinedDate)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.AccomodationPosition)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Student.UserName)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Space.Name)
+            </td>
+            <td>
+              <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
+              <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+              <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- ============================================================== -->

@@ -1,0 +1,60 @@
+﻿@model StudentPropertyManagement.ViewModel.StudentsListViewmodel
+@{
+  ViewData["Title"] = "Students List";
+  Layout = "~/Views/Shared/_DashbordLayout.cshtml";
+}
+
+
+<div class="white-box">
+  <h3 class="box-title">@ViewData["Title"]</h3>
+  <div class="table-responsive">
+    <table class="table text-nowrap">
+      <thead>
+        <tr>
+          <th>
+            Registration Number
+          </th>
+          <th>
+            Full Name
+          </th>
+          <th>
+            Gender
+          </th>
+         
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model.Users)
+        {
+        <tr>
+          <td>
+            @item.UserName
+          </td>
+          <td>
+            @item.Surname @item.FirstName @item.MiddleName
+          </td>
+          <td>
+            @item.Gender.Name
+          </td>
+          
+          <td>
+            <a asp-action="StudentDetail" asp-route-id="@item.Id" class="btn btn-secondary">View</a>
+            @if (item.EmailConfirmed)
+            {
+              <a asp-action="ToggleActivate" asp-route-id="@item.Id" class="btn btn-outline-warning">Deactivate</a>
+            }
+            else
+            {
+              <a asp-action="ToggleActivate" asp-route-id="@item.Id" class="btn btn-outline-success">Activate</a>
+            }
+
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
